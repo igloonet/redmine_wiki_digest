@@ -1,0 +1,4 @@
+# English strings go here for Rails i18n
+en:
+  mail_body_wiki_content_changed: "The '%{id}' wiki page has been changed by %{author}."
+  wiki_digest_subject: "Wiki changes digest for" 
