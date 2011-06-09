@@ -1,8 +1,9 @@
 <% @data.each_pair do |project, wiki_contents| %>
 *<%= project.name %>*
 <% for wiki_content in wiki_contents %>
-  <% wiki_content_url = url_for(:controller => 'wiki', :action => 'show', :project_id => wiki_content.project, :id => wiki_content.page.title) %> 
-  <%= I18n.t(:mail_body_wiki_content_changed, :id => link_to(h(wiki_content.page.pretty_title), wiki_content_url), 
+  <% wiki_content_url = url_for(:controller => 'wiki', :action => 'show', :project_id => wiki_content.project, 
+    :id => wiki_content.page.title, :only_path => false) %> 
+  <%= I18n.t(:mail_body_wiki_content_changed, :id => h(wiki_content.page.pretty_title) + ' ' + wiki_content_url, 
                                         :author => h(wiki_content.author)) %>
   <%=h wiki_content.comments %>
 <% end %>

@@ -1,7 +1,7 @@
 <% @data.each_pair do |project, wiki_contents| %>
-<h1><%= project.name %></h1>
+<h2><%= project.name %></h2>
 <% for wiki_content in wiki_contents %>
-  <% wiki_content_url = url_for(:controller => 'wiki', :action => 'show', :project_id => wiki_content.project, :id => wiki_content.page.title) %> 
+  <% wiki_content_url = url_for(:controller => 'wiki', :action => 'show', :project_id => wiki_content.project, :id => wiki_content.page.title) %>
   <p><%= I18n.t(:mail_body_wiki_content_changed, :id => link_to(h(wiki_content.page.pretty_title), wiki_content_url), 
                                         :author => h(wiki_content.author)) %><br />
   <em><%=h wiki_content.comments %></em></p>
