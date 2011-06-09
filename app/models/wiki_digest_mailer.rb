@@ -2,7 +2,7 @@ class WikiDigestMailer < ActionMailer::Base
   def wiki_digest(user, data)
     recipients user.mail
     I18n.locale = user.language.blank? ? 'en' : user.language 
-    subject I18n.t(:wiki_digest_subject) + ' ' + Date.today.to_s(:short)
+    subject I18n.t(:wiki_digest_subject) + ' ' + Date.today.strftime("%d. %m.")
     body :data => data
     render_multipart('wiki_digest', body)
   end

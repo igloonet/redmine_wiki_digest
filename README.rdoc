@@ -19,6 +19,7 @@ I don't know, have you found some?
    - this will add table for wiki changes storing
 3. Restart redmine if it's already running
 4. Setup cron so it runs rake send_digests as frequently as you want
+   - you should run it like "rake send_digests RAILS_ENV=production HOST=www.yourdomain.cz"
 
 That's it, now you should be good to go
 
