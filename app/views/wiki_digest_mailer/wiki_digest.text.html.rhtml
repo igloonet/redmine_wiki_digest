@@ -1,9 +1,14 @@
-<% @data.each_pair do |project, wiki_contents| %>
+<% @data.each do |project, pages| %>
 <h2><%= project.name %></h2>
-<% for wiki_content in wiki_contents %>
-  <% wiki_content_url = url_for(:controller => 'wiki', :action => 'show', :project_id => wiki_content.project, :id => wiki_content.page.title) %>
-  <p><%= I18n.t(:mail_body_wiki_content_changed, :id => link_to(h(wiki_content.page.pretty_title), wiki_content_url), 
-                                        :author => h(wiki_content.author)) %><br />
-  <em><%=h wiki_content.comments %></em></p>
+<% pages.each do |page, wiki_contents| %>
+  <%- wiki_content_url = url_for(:controller => 'wiki', :action => 'show', :project_id => project, 
+       :id => page.title, :only_path => false, :host => ENV['HOST']) -%>
+  <%- authors = wiki_contents.map {|wc| h(wc.author)}.uniq.join (', ') -%>
+  <%- from = wiki_contents.min {|a,b| a.version <=> b.version} -%>
+  <%- to = wiki_contents.max {|a,b| a.version <=> b.version} -%>
+  <p><%= I18n.t(:mail_body_wiki_content_changed, :id => link_to(h(page.pretty_title), wiki_content_url), :author => authors) %><br />
+     <%= link_to(I18n.t(:show_diff), :controller => 'wiki', :action => 'diff', :version_from => from, 
+       :version_to => to, :host => ENV['HOST'], :project_id => project, :id => page.title)%>
+  </p>
 <% end %>
 <% end %>
