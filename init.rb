@@ -8,7 +8,4 @@ Redmine::Plugin.register :redmine_wiki_digest do
   version '0.0.2'
   url 'https://github.com/igloonet/redmine_wiki_digest'
   author_url 'http://www.igloonet.cz'
-  
-  require_dependency 'app/models/mailer'
-  require_dependency 'redmine_wiki_digest/mailer'
 end
