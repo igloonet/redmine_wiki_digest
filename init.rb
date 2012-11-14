@@ -8,4 +8,6 @@ Redmine::Plugin.register :redmine_wiki_digest do
   version '0.0.2'
   url 'https://github.com/igloonet/redmine_wiki_digest'
   author_url 'http://www.igloonet.cz'
+
+  require 'redmine_wiki_digest/wiki_content_observer'
 end
