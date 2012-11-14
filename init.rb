@@ -9,5 +9,6 @@ Redmine::Plugin.register :redmine_wiki_digest do
   url 'https://github.com/igloonet/redmine_wiki_digest'
   author_url 'http://www.igloonet.cz'
 
+  require Rails.root.to_s + '/app/models/wiki_content_observer'
   require 'redmine_wiki_digest/wiki_content_observer'
 end
