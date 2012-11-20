@@ -11,6 +11,6 @@ task :send_digests => :environment do
       digest.destroy
     end
     
-    WikiDigestMailer.deliver_wiki_digest(user, data) unless data.empty?
+    WikiDigestMailer.wiki_digest(user, data).deliver unless data.empty?
   end
 end
